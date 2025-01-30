@@ -1,0 +1,10 @@
+:: Problem Statement
+	- Some of the students are working on the task of singing voice transcription using Hubert model, it outputs three most probable phones every 20 ms (with SP representing frames with silence). The problem with this model is that sometimes it is not accurate and it becomes important to debug such cases by looking at the acoustic features and figure out what type of post-processing is needed.
+	
+:: Solution
+	- The tool will give few acoustic features for singing voice.	
+	- It will plot all these features aligned together for better debugging.
+	- It will give control over some important parameters to tweak.
+
+:: Coding Paragigm
+	- Please check out https://github.com/meluron/codingParadigm/blob/main/guidelines.md to know more about the code structure.
