@@ -29,7 +29,28 @@ class analyseSingingVoiceAcoustics(FBC):
 
 	outs
 	----
-	
+	audioSignal: ndarray	
+		audio signal array
+	audioSr: int
+		audio sampling rate
+	pitchValues: ndarray
+		pitch contour array (hz)
+	pitchTs: ndarray
+		pitch timestamps (sec)
+	intensityValues: ndarray
+		intensity contour array (dB)
+	intensityTs: ndarray
+		intensity timestamps (sec)
+	powerSpec: ndarray
+		power spectrum with log compression, for plotting purpose only
+	fs: ndarray
+		frequency index to hz map for power spectrum
+	ts: ndarray
+		time index to sec map for power spectrum
+	onsets: ndarray
+		onsets timestamps in sec
+	proms: ndarray
+		prominence of each of the onsets
 	
 	"""
 	
@@ -112,7 +133,7 @@ class analyseSingingVoiceAcoustics(FBC):
 				with open(gtTxtFp,  "r") as f:
 					content = [line.split("\t") for line in f.read().split("\n")]
 				gtOnsets = np.array([float(line[0]) for line in content if line and line[0].strip]) # strip check to avoid empty line in the txt
-				gtPhones = np.array([line[2] for line in content if line and line[0].strip]) #TODO: change as per the new format, no end time info
+				gtPhones = np.array([line[1] for line in content if line and line[0].strip])
 			except Exception as e:
 				pass #TODO
 

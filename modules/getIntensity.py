@@ -78,6 +78,8 @@ class getIntensity(FBC):
 		) # below min pitch, it will consider it as silence region
 		
 		intensityValues = intensity.values[0,:]
+		intensityValues = intensityValues - max(intensityValues) # max normalising
+		intensityValues = np.clip(intensityValues, -50, 0) # clipping everything below -50
 		intensityTs = np.arange(intensityValues.shape[0]) * 0.01 # but note that there is a lag of around 0.04s in what timestamps parselmouth gives and what is computed here
 		
 		# OUPUTS
